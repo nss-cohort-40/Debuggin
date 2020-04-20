@@ -22,7 +22,7 @@ const snacks = [
   },
   {
     name: "crackers",
-    tastesGood: true
+    tastesGood: "true"
   },
   {
     name: "almonds",
@@ -33,16 +33,21 @@ const snacks = [
     tastesGood: true
   },
   {
-    name: "caviar",
-    tastesGood: false
-  }
+    name: "beets",
+    tastesGood: "false"
+  },
+  {
+    name: "brownies",
+    tastesGood: true
+  },
 ]
 
 // snack card factory takes a snack object and makes an HTML representation
 function snackCard(snack) {
-  let taste = "yum"
-  if (!snack.tastesGood) {
-    taste = "yuck"
+  let taste = "yuck"
+  if (snack.tastesGood === true) {
+    // debugger;
+    taste = "yum"
   }
   return `<div id=${snack.name} class="snackCard">
             <h1>${snack.name}</h1>
@@ -78,7 +83,7 @@ function eatSnack(event) {
     alert("That was yummy!")
     event.target.innerHTML = "I want more!"
   } else {
-    alert(event.target.classList.value)
+    alert("I bet you do... Help yourself!")
     event.target.innerHTML = "Eat!"
   }
   event.target.parentElement.classList.toggle("eaten")
@@ -92,6 +97,7 @@ buttons.forEach(button => button.addEventListener("click", eatSnack));
 clearButton.addEventListener("click", () => {
   try {
     header.removeChild(header.lastElementChild)
+    // header.childNodes.forEach(child => child.remove())
   } catch (exception) {
     console.error("There are no headers to remove!!");
     console.error(exception)
