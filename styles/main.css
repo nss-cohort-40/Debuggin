@@ -25,3 +25,20 @@ section {
 .gross {
   background-color: yellowgreen;
 }
+
+footer {
+  display: flex;
+}
+
+#clear {
+  margin: auto;
+  background-color: darkgreen;
+  color: whitesmoke;
+  border-radius: 10px;
+  border-style: none;
+  font-size: 2em;
+}
+
+#clear:hover {
+  background-color: crimson;
+}

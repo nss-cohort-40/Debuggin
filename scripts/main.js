@@ -1,8 +1,10 @@
 console.log("We be debuggin'")
 
 // get references to DOM elements
-const section = document.querySelector("section");
+const section = document.querySelector(".main");
+
 const header = document.querySelector("header");
+console.log('header: ', header);
 const clearButton = document.querySelector("#clear")
 
 
@@ -22,7 +24,7 @@ const snacks = [
   },
   {
     name: "crackers",
-    tastesGood: "true"
+    tastesGood: 1
   },
   {
     name: "almonds",
@@ -45,8 +47,7 @@ const snacks = [
 // snack card factory takes a snack object and makes an HTML representation
 function snackCard(snack) {
   let taste = "yuck"
-  if (snack.tastesGood === true) {
-    // debugger;
+  if (snack.tastesGood == true) {
     taste = "yum"
   }
   return `<div id=${snack.name} class="snackCard">
@@ -57,7 +58,7 @@ function snackCard(snack) {
 
 // iterate snack objects array and make snack cards for each
 for (let i = 0; i < snacks.length; i++) {
-  // console.log("What is i:", i)
+  console.log("What snack is it:", snacks[i])
   section.innerHTML += snackCard(snacks[i])
 }
 
@@ -96,10 +97,10 @@ buttons.forEach(button => button.addEventListener("click", eatSnack));
 // clear headers - add try/catch in case no headers exist
 clearButton.addEventListener("click", () => {
   try {
-    header.removeChild(header.lastElementChild)
-    // header.childNodes.forEach(child => child.remove())
+    // header.removeChild(header.lastElementChild)
+    header.childNodes.forEach(child => child.remove());
   } catch (exception) {
-    console.error("There are no headers to remove!!");
+    alert("There are no headers to remove!! Read the error in the console");
     console.error(exception)
   }
 })
